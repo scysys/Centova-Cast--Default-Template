@@ -153,7 +153,7 @@ $(function(){
 	</td>
 </tr>
 <tr>
-	<td>{="Locale"}:&nbsp;</td>
+	<td>{="Locale"}:</td>
 	<td colspan="4">
 		<select name="config[locale]" size="1">
 		<option value=""{if $config.locale=""} selected="selected"{/if}>{="Server default"} - {$locales[$_CONSTANTS.LOCALE]} ({$_CONSTANTS.LOCALE})</option>
@@ -164,7 +164,7 @@ $(function(){
 	</td>
 </tr>
 <tr>
-	<td>{="Character encoding"}:&nbsp;</td>
+	<td>{="Character encoding"}:</td>
 	<td colspan="4">
 		<select name="config[charset]" size="1">
 		{loop $charset=$charsets}
