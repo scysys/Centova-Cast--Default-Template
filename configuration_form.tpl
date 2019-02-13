@@ -58,6 +58,7 @@ function go_autodj_tab() {
 {check ($privileged>0) and ($creating==0) and ($editingself==0) and ($template_editor==0)}
 	<input type="button" value="{="Login to this account"}" onclick="window.location='index.php?page=accounts&action=setuid&username={$config.username|htmlentities}'" />
 	<input type="button" value="{="Change account username"}" onclick="window.location='index.php?page=manageaccount&action=rename&username={$config.username|htmlentities}'" />
+	<input type="button" value="{="Change account type"}" onclick="window.location='index.php?page=convertaccount&username={$config.username|htmlentities}'" />
 {/check}
 
 {check ($reseller_editor==0) && ($rawconfigpermitted>0)}
