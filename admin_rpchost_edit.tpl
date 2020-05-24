@@ -41,28 +41,52 @@
 		{/tip}
 	</td>
 </tr>
-<tr>
-	<td>{="Default stream IP address"}: {$errors.defaultip|checkerror}</td>
-	<td>
-		<input type="text" id="rpcdefaultip" name="rpchost[defaultip]" size="16" maxlength="15" value="{$rpchost.defaultip|htmlentities}" />
-		{tip type="icon"}{="This is the default IP address which will be assigned to streams created on this server.  In most cases this will be the primary IP public address of the server."}{/tip}
-	</td>
-</tr>
-<tr>
-	<td>{="Port 80 proxy IP address"}: {$errors.proxyipaddress|checkerror}</td>
-	<td>
-		<input type="text" id="proxyipaddress" name="rpchost[proxyipaddress]" size="16" maxlength="128" value="{$rpchost.proxyipaddress|htmlentities}" /> ({="blank to use default stream IP address"})
-		{tip type="icon"}{="This is the IP address (or hostname) on which you have configured your port 80 proxy to listen on this host (if enabled).  In most cases this will be the primary public IP address of the server, and will be the same address as the 'default stream IP address' above."}{/tip}
-	</td>
-</tr>
-<tr>
-	<td>{="Region"}:</td>
-	<td>
-{if $regions|count==0}
-		{="All servers"}
-		<input type="hidden" name="rpchost[regionid]" value="1" />
-{else}
-		<select name="rpchost[regionid]" size="1">
+	<tr>
+		<td>{="Default stream IP address"}: {$errors.defaultip|checkerror}</td>
+		<td>
+			<input type="text" id="rpcdefaultip" name="rpchost[defaultip]" size="16" maxlength="15"
+				   value="{$rpchost.defaultip|htmlentities}"/>
+            {tip type="icon"}{="This is the default IP address which will be assigned to streams created on this server.  In most cases this will be the primary IP public address of the server."}{/tip}
+		</td>
+	</tr>
+	<tr>
+		<td>{="Web proxy hostname or IP"}: {$errors.proxyipaddress|checkerror}</td>
+		<td>
+			<input type="text" id="proxyipaddress" name="rpchost[proxyipaddress]" size="16" maxlength="128"
+				   value="{$rpchost.proxyipaddress|htmlentities}"/> ({="blank to use default stream hostname/IP"})
+            {tip type="icon"}{="This is the hostname (or IP address) on which you have configured your web proxy to listen on this host (if enabled).  In most cases this will be the same address as the 'Hostname' value above."}{/tip}
+		</td>
+	</tr>
+	<tr>
+		<td>{="Uses web ports"}:</td>
+		<td>
+			<select name="rpchost[webports]" size="1">
+				<option {if $rpchost.webports==0}selected="selected"
+                        {/if}value="0">{="No (host has not been configured for port 80 and/or 443)"}</option>
+				<option {if $rpchost.webports==1}selected="selected"
+                        {/if}value="1">{="Yes (host responds on port 80 and/or 443)"}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>{="Secure"}:</td>
+		<td>
+			<select name="rpchost[secure]" size="1">
+				<option {if $rpchost.secure==0}selected="selected"
+                        {/if}value="0">{="No (host does not support TLS/SSL)"}</option>
+				<option {if $rpchost.secure==1}selected="selected"
+                        {/if}value="1">{="Yes (host supports TLS/SSL)"}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>{="Region"}:</td>
+		<td>
+            {if $regions|count==0}
+                {="All servers"}
+				<input type="hidden" name="rpchost[regionid]" value="1"/>
+            {else}
+				<select name="rpchost[regionid]" size="1">
 		{loop $region=$regions}
 		<option {if $rpchost.regionid==$region.id}selected="selected" {/if}value="{$region.id}">{$region.title|htmlentities}</option>
 {/loop}
@@ -70,5 +94,4 @@
 {/if}
 	</td>
 </tr>
-	
 </table>

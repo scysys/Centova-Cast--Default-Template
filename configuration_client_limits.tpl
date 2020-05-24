@@ -251,16 +251,18 @@ window.centovacast.limitstab = {
 {/if}
 
 {if $caps.suppress_port80proxy==0}
-<tr><td colspan="2" style="font-size: 4px">&nbsp;</td></tr>
-<tr>
-	<td>{="Port 80 proxy"}:</td>
-	<td>
-		<select name="config[allowproxy]" size="1"{check $proxypermitted==0} disabled="disabled"{/check}>
-		<option value="0"{check $config.allowproxy==0} selected="selected"{/check}>{="Prohibited"}</option>
-		<option value="1"{check $config.allowproxy>0} selected="selected"{/check}>{="Permitted"}</option>
-		</select>
-		{$errors.allowproxy|checkerror}
-	</td>
-</tr>
-{/if}
+	<tr>
+		<td colspan="2" style="font-size: 4px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>{="Web proxy"}:</td>
+		<td>
+			<select name="config[allowproxy]" size="1"{check $proxypermitted==0} disabled="disabled"{/check}>
+				<option value="0"{check $config.allowproxy==0} selected="selected"{/check}>{="Prohibited"}</option>
+				<option value="1"{check $config.allowproxy>0} selected="selected"{/check}>{="Permitted"}</option>
+			</select>
+            {$errors.allowproxy|checkerror} {tip type="icon"}{="Specifies whether the web proxy may be used to allow streaming over HTTP/HTTPS."}{/tip}
+		</td>
+	</tr>
+    {/if}
 </table>

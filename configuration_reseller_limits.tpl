@@ -140,21 +140,21 @@
 	<td width="100">{="Raw configuration"}:</td>
 	<td colspan="3">
 		<select name="config[rawconfig]" size="1">
-		<option value="0"{check $config.rawconfig==0} selected="selected"{/check}>{="Prohibited"}</option>
-		<option value="1"{check $config.rawconfig>0} selected="selected"{/check}>{="Permitted"}</option>
+			<option value="0"{check $config.rawconfig==0} selected="selected"{/check}>{="Prohibited"}</option>
+			<option value="1"{check $config.rawconfig>0} selected="selected"{/check}>{="Permitted"}</option>
 		</select>
-		{$errors.rawconfig|checkerror} {tip type="icon"}{="Allows the user to edit the raw stream configuration files.  As this poses a potential security risk and allows the user to bypass many account limits, only trusted users should receive this privilege."}{/tip}
+        {$errors.rawconfig|checkerror} {tip type="icon"}{="Allows the user to edit the raw stream configuration files.  As this poses a potential security risk and allows the user to bypass many account limits, only trusted users should receive this privilege."}{/tip}
 	</td>
 </tr>
-<tr>
-	<td>{="Port 80 proxy"}:</td>
-	<td colspan="3">
-		<select name="config[allowproxy]" size="1">
-		<option value="1"{if $config.allowproxy==1} selected="selected"{/if}>{="Permitted"}</option>
-		<option value="0"{if $config.allowproxy==0} selected="selected"{/if}>{="Prohibited"}</option>
-		</select>
-		{tip type="icon"}{="If enabled, your resellers' clients will be permitted to use Centova Cast's port-80 proxy to access streams from behind restrictive firewalls.<br /><br />Note that enabling this feature may dramatically affect your server's performance if used on busy streams; consult the documentation for more information."}{/tip}
-	</td>
-</tr>
+	<tr>
+		<td>{="Web proxy"}:</td>
+		<td colspan="3">
+			<select name="config[allowproxy]" size="1">
+				<option value="1"{if $config.allowproxy==1} selected="selected"{/if}>{="Permitted"}</option>
+				<option value="0"{if $config.allowproxy==0} selected="selected"{/if}>{="Prohibited"}</option>
+			</select>
+            {tip type="icon"}{="If enabled, your resellers' clients will be permitted to use Centova Cast's web proxy to access streams over HTTP/HTTPS from behind restrictive firewalls."}{/tip}
+		</td>
+	</tr>
 </table>
 
